@@ -33,7 +33,7 @@ const SuccessStories = () => {
               />
             </SlideReveal>
 
-            <SlideReveal flow="y" delay={1.4}>
+            <SlideReveal flow="y" delay={1.2}>
               <SuccessStory
                 heading="Pioneering the Future"
                 text=" We have also investigated the Harnessing of Quantum Computing for Artificial Gas Lift Scenarios in Marginal Fields."

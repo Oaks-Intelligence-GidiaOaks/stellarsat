@@ -1,43 +1,58 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 import { TestimonialCard } from "../components";
-import Carousel from "react-elastic-carousel";
-import { useState } from "react";
-import { useRef } from "react";
+import Slider from "react-slick";
+import { getTestimonials } from "../../sanity/sanity-utils";
 
 const Testimonials = () => {
-  const [currentIndex, setCurrentIndex] = useState(0);
-  const carouselRef = useRef(null);
+  const [testData, setTestData] = useState(null);
 
-  const totalPages = 3;
-  let resetTimeout;
+  useEffect(() => {
+    const getTestQuery = async () => {
+      const data = await getTestimonials();
 
-  const items = [
-    {
-      name: "Sophia Whisky",
-      avatarImage: "",
-      position: "CEO o2designs",
-      text: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem natus maxime quae amet corporis quaerat fugit pariatur temporibus tempora",
-    },
-    {
-      name: "Sophia Whisky",
-      avatarImage: "",
-      position: "CEO o2designs",
-      text: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem natus maxime quae amet corporis quaerat fugit pariatur temporibus tempora",
-    },
-    {
-      name: "Sophia Whisky",
-      avatarImage: "",
-      position: "CEO o2designs",
-      text: "Lorem, ipsum dolor sit amet consectetur adipisicing elit. Voluptatem natus maxime quae amet corporis quaerat fugit pariatur temporibus tempora",
-    },
-  ];
+      setTestData(data);
+    };
 
-  const breakPoints = [
-    { width: 1, itemsToShow: 1 },
-    { width: 550, itemsToShow: 2, itemsToScroll: 2 },
-    { width: 768, itemsToShow: 3 },
-    { width: 1200, itemsToShow: 3 },
-  ];
+    getTestQuery();
+  }, []);
+
+  var settings = {
+    dots: true,
+    infinite: true,
+    speed: 500,
+    slidesToShow: 3,
+    slidesToScroll: 3,
+    initialSlide: 0,
+    responsive: [
+      {
+        breakpoint: 1024,
+        settings: {
+          slidesToShow: 2,
+          slidesToScroll: 2,
+          infinite: true,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 700,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 3,
+          dots: true,
+        },
+      },
+      {
+        breakpoint: 480,
+        settings: {
+          slidesToShow: 1,
+          slidesToScroll: 3,
+          centerMode: true,
+          centerPadding: "30px",
+          dots: true,
+        },
+      },
+    ],
+  };
 
   return (
     <section id="testimonials" className="py-24">
@@ -52,25 +67,19 @@ const Testimonials = () => {
           </div>
 
           {/* slider */}
-          <div className="flex items-center  flex-wrap justify-center gap-3">
-            <Carousel
-              ref={carouselRef}
-              breakPoints={breakPoints}
-              enableAutoPlay={true}
-              autoPlaySpeed={5000}
-              isInfinite={true}
-              initialActiveIndex={1}
-            >
-              {items.map((item, i) => (
+          <div className="max-w-5xl mx-auto">
+            <Slider {...settings}>
+              {testData?.map((item, i) => (
                 <TestimonialCard
-                  id={i}
+                  data={item}
+                  key={i}
                   name={item.name}
                   avatarImage={item.avatar}
                   position={item.position}
                   text={item.text}
                 />
               ))}
-            </Carousel>
+            </Slider>
           </div>
         </div>
       </div>

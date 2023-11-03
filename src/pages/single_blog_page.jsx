@@ -1,43 +1,49 @@
-import React from "react";
+import React, { useEffect, useState } from "react";
 import { ContactUs, JoinUs, BlogPostBanner } from "../containers";
 import { BlogPost, PostCard } from "../components";
 import blog1 from "../assets/blog1.svg";
+import { useParams } from "react-router-dom";
+import { getBlogPost, getBlogPosts } from "../../sanity/sanity-utils";
 
 const SingleBlogPage = () => {
+  const [blogPost, setBlogPost] = useState(null);
+  const [blogPosts, setBlogPosts] = useState([]);
+  const { id } = useParams();
+
+  useEffect(() => {
+    const getPostQuery = async () => {
+      const data = await getBlogPost(id);
+      const ddata = await getBlogPosts();
+
+      setBlogPost(data);
+      setBlogPosts(ddata);
+    };
+
+    getPostQuery();
+  }, [id]);
+
   return (
     <div>
       {/* banner  */}
-      <BlogPostBanner />
+      <BlogPostBanner data={blogPost} />
 
       {/* main content container */}
-      <BlogPost />
+      <BlogPost data={blogPost} />
 
       {/* other blog posts  */}
       <div className="py-24 container mx-auto flex flex-col md:flex-row items-center justify-center gap-3">
-        <PostCard
-          title="Stellarsat Limited"
-          image={blog1}
-          comments=""
-          user=""
-          desc="Stellarsat Limited is at the forefront of developing and leveraging emerging technologies within the remits of space, communications and quantum technologies. We are committed to the safe and responsible deployment of these technology areas in achieving the sustainable development goals (SDGs)"
-          mainBlog
-        />
-        <PostCard
-          title="Stellarsat Limited"
-          image={blog1}
-          comments=""
-          user=""
-          desc="Stellarsat Limited is at the forefront of developing and leveraging emerging technologies within the remits of space, communications and quantum technologies. We are committed to the safe and responsible deployment of these technology areas in achieving the sustainable development goals (SDGs)"
-          mainBlog
-        />
-        <PostCard
-          title="Stellarsat Limited"
-          image={blog1}
-          comments=""
-          user=""
-          desc="Stellarsat Limited is at the forefront of developing and leveraging emerging technologies within the remits of space, communications and quantum technologies. We are committed to the safe and responsible deployment of these technology areas in achieving the sustainable development goals (SDGs)"
-          mainBlog
-        />
+        {blogPosts.length > 0 &&
+          blogPosts?.slice(0, 4).map((post) => (
+            <PostCard
+              key={post._id}
+              // title={post.title}
+              // image={post.image}
+              // date={post.date}
+              // excerpt={post.excerpt}
+              // slug={post.slug}
+              data={post}
+            />
+          ))}
       </div>
 
       {/* join us */}

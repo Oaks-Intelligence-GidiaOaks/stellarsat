@@ -73,3 +73,20 @@ input[type="date"]::-webkit-calendar-picker-indicator {
 
   box-shadow: rgba(178, 152, 224, 0.52) 0px 0px 1px 3px !important;
 }
+
+#rich-text-container > h2,
+#rich-text-container > h3,
+#rich-text-container > h4 {
+  padding: 1rem 0;
+  font-weight: 600;
+  font-size: 2rem;
+}
+
+#rich-text-container > ul {
+  padding: 1rem 0;
+}
+
+#rich-text-container li {
+  list-style: circle;
+  margin-left: 1rem;
+}

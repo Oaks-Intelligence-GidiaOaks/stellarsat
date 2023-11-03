@@ -22,7 +22,7 @@ const Specialization = () => {
         <div className=" space-y-28 md:space-y-52">
           <div className="flex flex-col lg:flex-row lg:justify-between items-center gap-10 ">
             <div className="md:flex-[0.45]">
-              <FadeReveal delay={1.5}>
+              <FadeReveal delay={1.1}>
                 <img src={dataImage} alt="data image" />
               </FadeReveal>
             </div>
@@ -33,13 +33,13 @@ const Specialization = () => {
                   Knowledge
                 </h5>
               </SlideReveal>
-              <SlideReveal flow="y" delay={0.67}>
+              <SlideReveal flow="y" delay={0.5}>
                 <h3 className=" text-2xl md:text-3xl uppercase header-font">
                   BIG DATA
                 </h3>
               </SlideReveal>
 
-              <SlideReveal flow="y" delay={1.34}>
+              <SlideReveal flow="y" delay={1.2}>
                 <p className="text-sm">
                   In helping our clients make more data-driven decisions, we
                   assist them in creating a secure and informative
@@ -91,7 +91,7 @@ const Specialization = () => {
 
           <div className="flex flex-col lg:flex-row gap-10  lg:justify-between  items-center">
             <div className="flex-[0.4]">
-              <FadeReveal delay={1.5}>
+              <FadeReveal delay={1.3}>
                 <img src={networking} alt="networking" />
               </FadeReveal>
             </div>

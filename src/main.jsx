@@ -10,7 +10,11 @@ import {
   BlogPage,
   ContactPage,
   SingleBlogPage,
+  AdminPage,
 } from "./pages";
+import "slick-carousel/slick/slick.css";
+import "slick-carousel/slick/slick-theme.css";
+import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
 
 export const router = createBrowserRouter([
   {
@@ -35,15 +39,23 @@ export const router = createBrowserRouter([
         element: <ContactPage />,
       },
       {
-        path: "/blog/1",
+        path: "/blog/:id",
         element: <SingleBlogPage />,
+      },
+      {
+        path: "/admin",
+        element: <AdminPage />,
       },
     ],
   },
 ]);
 
+const queryClient = new QueryClient();
+
 ReactDOM.createRoot(document.getElementById("root")).render(
   <React.StrictMode>
-    <RouterProvider router={router} />
+    <QueryClientProvider client={queryClient}>
+      <RouterProvider router={router} />
+    </QueryClientProvider>
   </React.StrictMode>
 );

@@ -36,7 +36,7 @@ const partners = () => {
           <FadeReveal delay={0.8}>
             <img src={oaksLogo} className="w-32" alt="oaks intelligence logo" />
           </FadeReveal>
-          <FadeReveal delay={1.8}>
+          <FadeReveal delay={1.6}>
             <img className="w-32" src={sbriLogo} alt="sbri logo" />
           </FadeReveal>
           <FadeReveal delay={2.2}>
@@ -46,7 +46,7 @@ const partners = () => {
               alt="department of energy and security logo"
             />
           </FadeReveal>
-          <FadeReveal delay={3.2}>
+          <FadeReveal delay={3.0}>
             <img className="w-32" src={mDirectLogo} alt="mDirect logo" />
           </FadeReveal>
         </div>

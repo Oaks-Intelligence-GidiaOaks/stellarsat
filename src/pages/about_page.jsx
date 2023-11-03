@@ -1,6 +1,7 @@
 import React from "react";
 import { AboutUs, ContactUs, JoinUs, Specialization } from "../containers";
 import AboutBanner from "../containers/about_banner";
+import aboutBannerBg from "../assets/aboutBanner.svg";
 
 const AboutPage = () => {
   return (
@@ -11,6 +12,7 @@ const AboutPage = () => {
         lead=" Stellarsat wields the mastery and expertise to grow any business
             through digital solutions, that help them break into the market and
             stand out."
+        image={aboutBannerBg}
       />
 
       {/* About us */}

@@ -1,5 +1,4 @@
-import React from "react";
-
+import { useEffect } from "react";
 import {
   AboutUs,
   Banner,
@@ -12,8 +11,11 @@ import {
   SuccessStories,
   Testimonials,
 } from "../containers";
+import { getBlogPosts } from "../../sanity/sanity-utils";
 
 const HomePage = () => {
+  // console.log(import.meta.env);
+
   return (
     <div className="conatiner mx-auto">
       {/* banner */}

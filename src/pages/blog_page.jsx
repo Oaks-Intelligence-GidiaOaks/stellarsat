@@ -1,12 +1,15 @@
-import React from "react";
-import { Banner, ContactUs, JoinUs, MainBlog } from "../containers";
+import { ContactUs, JoinUs, MainBlog } from "../containers";
 import AboutBanner from "../containers/about_banner";
+import blogBanner from "../assets/blogBanner.svg";
 
 const BlogPage = () => {
   return (
     <div className="  ">
       {/* blog banner */}
-      <AboutBanner headerText="Get the latest Updates from our blog " />
+      <AboutBanner
+        image={blogBanner}
+        headerText="Get the latest Updates from our blog "
+      />
 
       {/* blog headlines */}
       <MainBlog />
