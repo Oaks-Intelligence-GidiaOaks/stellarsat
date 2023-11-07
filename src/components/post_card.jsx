@@ -13,7 +13,7 @@ const PostCard = ({ mainBlog, data }) => {
 
   return (
     <Link to={`/blog/${data?.slug}`}>
-      <div className=" min-w-[280px] h-80 flex flex-col   flex-grow m-2 my-1">
+      <div className=" min-w-[280px] h-80 flex flex-col flex-grow m-2 my-1">
         <div className="relative">
           <img
             src={data?.image}

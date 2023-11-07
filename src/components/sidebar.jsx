@@ -1,9 +1,11 @@
 import Button from "./button";
 import Logo from "../assets/logo.svg";
-import { NavLink } from "react-router-dom";
+import { NavLink, useNavigate } from "react-router-dom";
 import { AiOutlineClose } from "react-icons/ai";
 
 const Sidebar = ({ sidebarShown, toggleSidebar, activeStyle }) => {
+  const navigate = useNavigate();
+
   return (
     <div
       className={`xs:${
@@ -52,7 +54,15 @@ const Sidebar = ({ sidebarShown, toggleSidebar, activeStyle }) => {
           <span>Contact Us</span>
         </NavLink>
 
-        <Button text="GET STARTED" />
+        <div
+          className=""
+          onClick={() => {
+            toggleSidebar();
+            navigate("/contact");
+          }}
+        >
+          <Button text="GET STARTED" />
+        </div>
       </div>
     </div>
   );
