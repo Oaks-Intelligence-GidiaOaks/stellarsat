@@ -6,7 +6,7 @@ import { FiSearch } from "react-icons/fi";
 import { MdDateRange } from "react-icons/md";
 import { BiChevronDown } from "react-icons/bi";
 import { FadeReveal, SlideReveal } from "../components/animation";
-import { getBlogPosts } from "../../sanity/sanity-utils";
+import { getBlogPosts } from "../../utils/sanity-utils";
 
 const MainBlog = () => {
   const [blogPosts, setBlogPosts] = useState(null);

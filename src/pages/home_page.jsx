@@ -11,7 +11,7 @@ import {
   SuccessStories,
   Testimonials,
 } from "../containers";
-import { getBlogPosts } from "../../sanity/sanity-utils";
+import { getBlogPosts } from "../../utils/sanity-utils";
 
 const HomePage = () => {
   // console.log(import.meta.env);

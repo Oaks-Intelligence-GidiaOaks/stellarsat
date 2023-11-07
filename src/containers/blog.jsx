@@ -5,7 +5,7 @@ import blog2 from "../assets/blog2.svg";
 import blog3 from "../assets/blog3.svg";
 import blog4 from "../assets/blog4.svg";
 import { SlideReveal } from "../components/animation";
-import { getBlogPosts } from "../../sanity/sanity-utils";
+import { getBlogPosts } from "../../utils/sanity-utils";
 
 const Blog = () => {
   const [posts, setPosts] = useState([]);

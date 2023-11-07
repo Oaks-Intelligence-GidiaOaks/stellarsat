@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import { TestimonialCard } from "../components";
 import Slider from "react-slick";
-import { getTestimonials } from "../../sanity/sanity-utils";
+import { getTestimonials } from "../../utils/sanity-utils";
 
 const Testimonials = () => {
   const [testData, setTestData] = useState(null);

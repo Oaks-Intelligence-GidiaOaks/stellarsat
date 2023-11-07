@@ -3,7 +3,7 @@ import { ContactUs, JoinUs, BlogPostBanner } from "../containers";
 import { BlogPost, PostCard } from "../components";
 import blog1 from "../assets/blog1.svg";
 import { useParams } from "react-router-dom";
-import { getBlogPost, getBlogPosts } from "../../sanity/sanity-utils";
+import { getBlogPost, getBlogPosts } from "../../utils/sanity-utils";
 
 const SingleBlogPage = () => {
   const [blogPost, setBlogPost] = useState(null);

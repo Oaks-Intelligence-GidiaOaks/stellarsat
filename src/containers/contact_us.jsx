@@ -4,10 +4,9 @@ import { FadeReveal } from "../components/animation";
 import { ToastContainer, toast } from "react-toastify";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
-import { addFormData } from "../../sanity/sanity-utils";
+import { addFormData } from "../../utils/sanity-utils";
 import axios from "axios";
 import { email_url } from "../../utils/constants";
-// import { mailer } from "../../utils/utils.js";
 
 const ContactUs = () => {
   const {
