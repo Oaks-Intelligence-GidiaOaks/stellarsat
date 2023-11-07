@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import { BigCardPost, CustomInput, PostCard } from "../components";
+import { BigCardPost, CustomInput, DateInput, PostCard } from "../components";
 import postBg from "../assets/postBg.svg";
 import bigCardPost from "../assets/bigCardPost.svg";
 import { FiSearch } from "react-icons/fi";
@@ -21,6 +21,16 @@ const MainBlog = () => {
     getPostsQuery();
   }, []);
 
+  const searchPost = async (str) => {
+    try {
+      const data = await getBlogPosts(str);
+      console.log(data);
+      setBlogPosts(data);
+    } catch (err) {
+      console.error(err);
+    }
+  };
+
   const firstPost = blogPosts?.[0];
 
   return (
@@ -33,12 +43,10 @@ const MainBlog = () => {
               Icon={FiSearch}
               placeholderText="Search topic"
               type="text"
+              onChange={searchPost}
+              setBlogPosts={setBlogPosts}
             />
-            <CustomInput
-              Icon={MdDateRange}
-              placeholderText="Date"
-              type="date"
-            />
+            <DateInput Icon={MdDateRange} />
 
             <div className="flex-1" />
             <CustomInput
@@ -46,11 +54,11 @@ const MainBlog = () => {
               type="dropdown"
               placeholderText="Categories"
             />
-            <CustomInput
+            {/* <CustomInput
               Icon={BiChevronDown}
               type="dropdown"
               placeholderText="Author"
-            />
+            /> */}
             <CustomInput
               Icon={BiChevronDown}
               type="dropdown"

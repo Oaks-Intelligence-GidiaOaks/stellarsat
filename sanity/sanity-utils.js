@@ -7,7 +7,7 @@ const clientConfig = {
   useCdn: false,
 }
 
-export const getBlogPosts = async () => {
+export const getBlogPosts = async (searchTitle) => {
   const client = createClient(clientConfig)
 
   const query = `*[_type=="post"] | order(_createdAt) {
@@ -23,7 +23,9 @@ export const getBlogPosts = async () => {
     position,
   }`
 
-  return client.fetch(query)
+  const searchQuery = `*[_type=="post" && title match "${searchTitle}"] | order(_createdAt)`
+
+  return searchTitle ? client.fetch(searchQuery) : client.fetch(query)
 }
 
 export const getBlogPost = async (slug) => {

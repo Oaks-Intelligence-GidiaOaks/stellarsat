@@ -33,17 +33,9 @@ const SingleBlogPage = () => {
       {/* other blog posts  */}
       <div className="py-24 container mx-auto flex flex-col md:flex-row items-center justify-center gap-3">
         {blogPosts.length > 0 &&
-          blogPosts?.slice(0, 4).map((post) => (
-            <PostCard
-              key={post._id}
-              // title={post.title}
-              // image={post.image}
-              // date={post.date}
-              // excerpt={post.excerpt}
-              // slug={post.slug}
-              data={post}
-            />
-          ))}
+          blogPosts
+            ?.slice(0, 4)
+            .map((post) => <PostCard key={post._id} data={post} />)}
       </div>
 
       {/* join us */}

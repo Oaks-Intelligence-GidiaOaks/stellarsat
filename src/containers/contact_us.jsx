@@ -1,10 +1,13 @@
 import { Button, FormInput } from "../components";
 import pressComputer from "../assets/pressComputer.svg";
 import { FadeReveal } from "../components/animation";
+import { ToastContainer, toast } from "react-toastify";
 import { useQueryClient, useMutation } from "@tanstack/react-query";
 import { useForm } from "react-hook-form";
 import { addFormData } from "../../sanity/sanity-utils";
-// import { mailer } from "../../utils/utils";
+import axios from "axios";
+import { email_url } from "../../utils/constants";
+// import { mailer } from "../../utils/utils.js";
 
 const ContactUs = () => {
   const {
@@ -16,12 +19,17 @@ const ContactUs = () => {
     formState: { errors },
   } = useForm({
     defaultValues: {
-      firstName: "",
-      lastName: "",
+      name: "",
       email: "",
+      companyName: "",
+      companyWebsite: "",
       message: "",
     },
   });
+
+  if (errors) {
+    console.log(errors);
+  }
 
   const { mutate, isPending, isSuccess } = useMutation({
     mutationKey: ["submit"],
@@ -38,22 +46,15 @@ const ContactUs = () => {
   });
 
   const submitHandler = async (data) => {
-    // e.preventDefault();
+    try {
+      axios.post(`${email_url}send_email`, data);
 
-    const mailData = {
-      email: "emmaotuonye1@gmail.com",
-      subject: "Testing mail server",
-      message: "This is a test message",
-    };
-    console.log(data);
-
-    // const res = await mailer(mailData);
-
-    console.log(res);
-
-    // console.log(data);
-
-    // mutate(data);
+      toast("Successful");
+      reset();
+    } catch (err) {
+      toast("Try again, error occured", err.message);
+      console.log(err.message);
+    }
   };
 
   return (
@@ -79,30 +80,42 @@ const ContactUs = () => {
             >
               <div className="flex flex-col md:flex-row items-start justify-between gap-3">
                 <FormInput
-                  formProps={register("name")}
+                  formProps={{
+                    register: register("name", {
+                      required: true,
+                      message: "name is required",
+                    }),
+                  }}
                   label="Name"
                   placeholder="First and last name"
                   type="text"
+                  error={errors.name}
                 />
 
                 <FormInput
-                  formProps={register("email")}
+                  formProps={{
+                    register: register("email", {
+                      required: true,
+                      message: "Email is required",
+                    }),
+                  }}
                   label="Email"
                   placeholder="Email Address"
                   type="email"
+                  error={errors.email}
                 />
               </div>
 
               <div className="flex flex-col md:flex-row items-start justify-between gap-3">
                 <FormInput
-                  formProps={register("companyName")}
+                  formProps={{ register: register("companyName") }}
                   label="Company Name"
-                  placeholder="First and last name"
+                  placeholder="Company name"
                   type="text"
                 />
 
                 <FormInput
-                  formProps={register("companyWebsite")}
+                  formProps={{ register: register("companyWebsite") }}
                   label="Company website"
                   placeholder="Website Address"
                   type="text"
@@ -111,15 +124,24 @@ const ContactUs = () => {
 
               <textarea
                 rows={8}
-                {...register("content")}
+                {...register("message", {
+                  required: true,
+                  message: "This is required",
+                })}
                 className="p-3 rounded bg-blue outline-none text-gray-200 w-full "
               ></textarea>
 
-              <Button text="SEND" />
+              <button
+                className=" w-fit cursor-pointer "
+                // onClick={handleSubmit(submitHandler)}
+              >
+                <Button text="SEND" />
+              </button>
             </form>
           </div>
         </div>
       </section>
+      <ToastContainer />
     </FadeReveal>
   );
 };

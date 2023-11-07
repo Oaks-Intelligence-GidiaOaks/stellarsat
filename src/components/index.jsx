@@ -10,3 +10,5 @@ export { default as ParticlesBackground } from "./particles_background";
 export { default as CustomInput } from "./custom_input";
 export { default as BigCardPost } from "./big_card_post";
 export { default as BlogPost } from "./blog_post";
+export { default as DateInput } from "./date_input";
+export { default as DropdownInput } from "./dropdown_input";
