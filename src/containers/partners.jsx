@@ -33,20 +33,20 @@ const partners = () => {
             <img className="w-32" src={innovateUkLogo} alt="innovate logo " />
           </FadeReveal>
 
-          <FadeReveal delay={0.8}>
+          <FadeReveal delay={0.3}>
             <img src={oaksLogo} className="w-32" alt="oaks intelligence logo" />
           </FadeReveal>
-          <FadeReveal delay={1.6}>
+          <FadeReveal delay={0.6}>
             <img className="w-32" src={sbriLogo} alt="sbri logo" />
           </FadeReveal>
-          <FadeReveal delay={2.2}>
+          <FadeReveal delay={0.9}>
             <img
               className="w-32"
               src={deptEnergyLogo}
               alt="department of energy and security logo"
             />
           </FadeReveal>
-          <FadeReveal delay={3.0}>
+          <FadeReveal delay={1.2}>
             <img className="w-32" src={mDirectLogo} alt="mDirect logo" />
           </FadeReveal>
         </div>

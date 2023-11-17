@@ -91,7 +91,7 @@ const Specialization = () => {
 
           <div className="flex flex-col lg:flex-row gap-10  lg:justify-between  items-center">
             <div className="flex-[0.4]">
-              <FadeReveal delay={1.3}>
+              <FadeReveal delay={0.5}>
                 <img src={networking} alt="networking" />
               </FadeReveal>
             </div>
@@ -109,7 +109,7 @@ const Specialization = () => {
                 </h3>
               </SlideReveal>
 
-              <SlideReveal flow="y" delay={1.3}>
+              <SlideReveal flow="y" delay={0.9}>
                 <p className="text-sm">
                   Understanding the need for speed in today’s world, we have
                   built capacity in advanced design and rapid solution

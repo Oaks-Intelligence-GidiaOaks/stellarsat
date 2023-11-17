@@ -4,6 +4,7 @@ import Button from "./button";
 import { BiLogoFacebook } from "react-icons/bi";
 import { BsTwitter, BsInstagram } from "react-icons/bs";
 import { AiOutlineRight } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const Footer = () => {
   return (
@@ -49,11 +50,21 @@ const Footer = () => {
             <h5 className="text-primary-300">Company</h5>
 
             <ul className="space-y-2">
-              <li>About Us</li>
-              <li>Focus Area</li>
-              <li>Achievements</li>
-              <li>Blog</li>
-              <li>Career</li>
+              <Link to="/about">
+                <li>About Us</li>
+              </Link>
+              <Link to="/">
+                <li>Focus Area</li>
+              </Link>
+
+              <Link to="/">
+                <li>Achievements</li>
+              </Link>
+
+              <Link to="/blog">
+                <li>Blog</li>
+              </Link>
+              {/* <li>Career</li> */}
             </ul>
           </div>
 

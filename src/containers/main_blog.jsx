@@ -66,7 +66,7 @@ const MainBlog = () => {
             />
           </div>
 
-          <div className="py-8 grid  grid-cols-1 md:grid-cols-3 grid-flow-row-dense">
+          <div className="py-8 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 grid-flow-row-dense">
             {/* <div className="md:col-start-1 md:col-end-3 md:row-span-2 ">
             <BigCardPost data={firstPost} img={bigCardPost} />
             </div> */}
