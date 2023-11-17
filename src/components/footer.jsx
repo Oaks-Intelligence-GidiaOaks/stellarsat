@@ -1,12 +1,40 @@
-import React from "react";
+import React, { useEffect } from "react";
 import logo from "../assets/logo.svg";
 import Button from "./button";
 import { BiLogoFacebook } from "react-icons/bi";
 import { BsTwitter, BsInstagram } from "react-icons/bs";
 import { AiOutlineRight } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import {
+  Link as Linkk,
+  Element,
+  Events,
+  animateScroll as scroll,
+  scrollSpy,
+} from "react-scroll";
 
 const Footer = () => {
+  useEffect(() => {
+    // Registering the 'begin' event and logging it to the console when triggered.
+    Events.scrollEvent.register("begin", (to, element) => {
+      console.log("begin", to, element);
+    });
+
+    // Registering the 'end' event and logging it to the console when triggered.
+    Events.scrollEvent.register("end", (to, element) => {
+      console.log("end", to, element);
+    });
+
+    // Updating scrollSpy when the component mounts.
+    scrollSpy.update();
+
+    // Returning a cleanup function to remove the registered events when the component unmounts.
+    return () => {
+      Events.scrollEvent.remove("begin");
+      Events.scrollEvent.remove("end");
+    };
+  }, []);
+
   return (
     <div className=" bg-dark">
       <div className="container space-y-16 py-16 ">
@@ -50,18 +78,23 @@ const Footer = () => {
             <h5 className="text-primary-300">Company</h5>
 
             <ul className="space-y-2">
-              <Link to="/about">
+              <Link className="cursor-pointer" to="/about">
                 <li>About Us</li>
               </Link>
-              <Link to="/">
+              <Link
+                to="specialty"
+                className="cursor-pointer"
+                smooth={true}
+                duration={500}
+              >
                 <li>Focus Area</li>
               </Link>
 
-              <Link to="/">
+              <Link to="sucess-stories" className="cursor-pointer">
                 <li>Achievements</li>
               </Link>
 
-              <Link to="/blog">
+              <Link className="cursor-pointer" to="/blog">
                 <li>Blog</li>
               </Link>
               {/* <li>Career</li> */}
@@ -72,14 +105,29 @@ const Footer = () => {
           <div className="flex-1 space-y-2">
             <h5 className="text-primary-300">Quick links</h5>
             <ul className="space-y-2">
-              <li>About Us</li>
-              <li>Focus Area</li>
+              <Link to="/about">
+                <li>About Us</li>
+              </Link>
+
+              <Linkk to="specialty" className="cursor-pointer">
+                <li>Focus Area</li>
+              </Linkk>
             </ul>
 
             <h5 className="text-primary-300">Partners</h5>
             <ul className="space-y-2">
-              <li>About Us</li>
-              <li>Focus Area</li>
+              <Link to="/about">
+                <li>About Us</li>
+              </Link>
+
+              <Linkk
+                smooth={true}
+                duration={500}
+                to="specialty"
+                className="cursor-pointer"
+              >
+                <li>Focus Area</li>
+              </Linkk>
             </ul>
           </div>
 
@@ -89,7 +137,10 @@ const Footer = () => {
 
             <ul className="space-y-2">
               <li>FAQs</li>
-              <li>Contact Us Area</li>
+
+              <Link to="/contact">
+                <li>Contact Us Area</li>
+              </Link>
             </ul>
           </div>
         </div>
