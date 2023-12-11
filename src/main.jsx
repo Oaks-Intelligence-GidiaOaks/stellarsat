@@ -44,7 +44,7 @@ export const router = createBrowserRouter([
         element: <SingleBlogPage />,
       },
       {
-        path: "/admin",
+        path: "/admin/*",
         element: <AdminPage />,
       },
     ],
