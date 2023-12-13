@@ -40,7 +40,7 @@ const AdminPage = () => {
           basePath: "/admin",
           name: "StellarSat_Content_Studio",
           title: "StellarSat Content Studio",
-          projectId: "xymdbyrp",
+          projectId: "5r6dhiut",
           dataset: "production",
           schema: {
             types: schemaTypes,
