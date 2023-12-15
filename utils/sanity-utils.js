@@ -1,14 +1,15 @@
-import {createClient} from '@sanity/client'
+import { createClient } from "@sanity/client";
+import axios from "axios";
 
 const clientConfig = {
-  projectId: 'uismb98i',
-  dataset: 'production',
-  apiVersion: '2023-11-02',
+  projectId: "5r6dhiut",
+  dataset: "production",
+  apiVersion: "2023-11-02",
   useCdn: false,
-}
+};
 
 export const getBlogPosts = async (searchTitle) => {
-  const client = createClient(clientConfig)
+  const client = createClient(clientConfig);
 
   const query = `*[_type=="post"] | order(_createdAt) {
     _id,
@@ -21,17 +22,17 @@ export const getBlogPosts = async (searchTitle) => {
     author,
     "authorImg": authorImg.asset->url,
     position,
-  }`
+  }`;
 
-  const searchQuery = `*[_type=="post" && title match "${searchTitle}"] | order(_createdAt)`
+  const searchQuery = `*[_type=="post" && title match "${searchTitle}"] | order(_createdAt)`;
 
-  return searchTitle ? client.fetch(searchQuery) : client.fetch(query)
-}
+  return searchTitle ? client.fetch(searchQuery) : client.fetch(query);
+};
 
 export const getBlogPost = async (slug) => {
-  const client = createClient(clientConfig)
+  const client = createClient(clientConfig);
 
-  console.log('slug', slug)
+  console.log("slug", slug);
 
   const query = `*[_type=="post" && slug.current == $slug ] [0] {
     _id,
@@ -44,13 +45,13 @@ export const getBlogPost = async (slug) => {
     author,
     "authorImg": authorImg.asset->url,
     position,
-  }`
+  }`;
 
-  return client.fetch(query, {slug})
-}
+  return client.fetch(query, { slug });
+};
 
 export const getTestimonials = async () => {
-  const client = createClient(clientConfig)
+  const client = createClient(clientConfig);
 
   const query = `*[_type=="testimonials"] |order(_createdAt desc) {
     _id,
@@ -58,18 +59,18 @@ export const getTestimonials = async () => {
     content,
     "userImage": userImage.asset->url,
     testPosition,
-  }`
+  }`;
 
-  return client.fetch(query)
-}
+  return client.fetch(query);
+};
 
 export const addFormData = async (data) => {
-  const client = createClient(clientConfig)
+  const client = createClient(clientConfig);
   try {
-    const res = await client.create(data)
+    const res = await client.create(data);
 
-    console.log(res, 'data created succesfully...')
+    console.log(res, "data created succesfully...");
   } catch (err) {
-    console.error(`Error occurred: `, err)
+    console.error(`Error occurred: `, err);
   }
-}
+};
