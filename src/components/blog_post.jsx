@@ -29,6 +29,51 @@ const myPortableTextComponents = {
       );
     },
   },
+
+  list: {
+    bullet: ({ children }) => (
+      <ul className="ml-10 py-5 poppins-4 list-disc space-y-5 text-main-light dark:text-main">
+        {children}
+      </ul>
+    ),
+    number: ({ children }) => (
+      <ol className="mt-lg poppins-4 list-decimal text-main-light dark:text-main">
+        {children}
+      </ol>
+    ),
+  },
+  block: {
+    h1: ({ children }) => (
+      <h1 className="text-5xl py-6 font-bold poppins-7 text-main-light dark:gradient-text transition-all duration-300 ease-in-out">
+        {children}
+      </h1>
+    ),
+    h2: ({ children }) => (
+      <h2 className="text-4xl py-6 font-bold poppins-7 text-main-light dark:gradient-text transition-all duration-300 ease-in-out">
+        {children}
+      </h2>
+    ),
+    h3: ({ children }) => (
+      <h3 className="text-3xl py-6 font-bold poppins-7 text-main-light dark:gradient-text transition-all duration-300 ease-in-out">
+        {children}
+      </h3>
+    ),
+    h4: ({ children }) => (
+      <h4 className="text-2xl py-6 font-bold poppins-7 text-main-light dark:gradient-text">
+        {children}
+      </h4>
+    ),
+    normal: ({ children }) => (
+      <p className="text-main-light dark:text-main poppins-4 leading-[34px] mt-4 transition-all duration-300 ease-in-out">
+        {children}
+      </p>
+    ),
+    blockquote: ({ children }) => (
+      <blockquote className="border-1-[#F7AB0A] border-1-4 pl-5 py-5 my-5 poppins-4 text-main-light dark:text-main poppins-4 leading-[34px] mt-4 transition-all duration-300 ease-in-out">
+        {children}
+      </blockquote>
+    ),
+  },
 };
 
 const BlogPost = ({ data }) => {
@@ -70,11 +115,11 @@ const BlogPost = ({ data }) => {
             </div>
           </div>
 
-          <div className="space-y-3 ml-auto">
+          {/* <div className="space-y-3 ml-auto">
             <img src={facebook} alt="" />
             <img src={behance} alt="" />
             <img src={medium} alt="" />
-          </div>
+          </div> */}
         </div>
       </div>
     </section>

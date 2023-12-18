@@ -7,7 +7,6 @@ const BlogPostBanner = ({ data }) => {
 
   const style = {
     background: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url(${bigCardPost})`,
-
     backgroundSize: "cover",
     backgroundPosition: "center",
     backgroundRepeat: "no-repeat",
