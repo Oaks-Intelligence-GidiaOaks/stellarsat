@@ -1,5 +1,4 @@
 import React from "react";
-import bigCardPost from "../assets/bigCardPost.svg";
 import { Link } from "react-router-dom";
 
 const BigCardPost = ({ img, data }) => {

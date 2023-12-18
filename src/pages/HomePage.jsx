@@ -40,7 +40,7 @@ export const HomePage = () => {
       <SuccessStories />
 
       {/* FAQs */}
-      <FAQ />
+      {/* <FAQ /> */}
 
       {/* Testimonials */}
       <Testimonials />

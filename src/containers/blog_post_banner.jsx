@@ -3,8 +3,6 @@ import bigCardPost from "../assets/bigCardPost.svg";
 import { formatDate } from "../../utils/dateFormatter";
 
 const BlogPostBanner = ({ data }) => {
-  console.log("new", data);
-
   const style = {
     background: `linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.6)), url(${bigCardPost})`,
     backgroundSize: "cover",

@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { ContactUs, JoinUs, BlogPostBanner } from "../containers";
 import { BlogPost, PostCard } from "../components";
-import blog1 from "../assets/blog1.svg";
 import { useParams } from "react-router-dom";
 import { getBlogPost, getBlogPosts } from "../../utils/sanity-utils";
 
@@ -13,15 +12,15 @@ const SingleBlogPage = () => {
   useEffect(() => {
     const getPostQuery = async () => {
       const data = await getBlogPost(id);
-      const ddata = await getBlogPosts();
+      const ddata = await getBlogPosts(0, 4);
 
       setBlogPost(data);
-      setBlogPosts(ddata);
+      setBlogPosts(ddata.results);
     };
 
     getPostQuery();
   }, [id]);
-
+  console.log(blogPost);
   return (
     <div>
       {/* banner  */}

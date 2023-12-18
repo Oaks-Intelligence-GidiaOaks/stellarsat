@@ -1,5 +1,4 @@
 import { createClient } from "@sanity/client";
-import axios from "axios";
 
 const clientConfig = {
   projectId: "5r6dhiut",
@@ -8,10 +7,13 @@ const clientConfig = {
   useCdn: false,
 };
 
-export const getBlogPosts = async (searchTitle) => {
+export const getBlogPosts = async (skip, pageSize) => {
   const client = createClient(clientConfig);
 
-  const query = `*[_type=="post"] | order(_createdAt) {
+  const query = `{
+    "results": *[_type=="post"] [${skip}...${
+    skip + pageSize
+  }] | order(_createdAt) {
     _id,
     title,
     content,
@@ -22,17 +24,24 @@ export const getBlogPosts = async (searchTitle) => {
     author,
     "authorImg": authorImg.asset->url,
     position,
-  }`;
+  },
+  "totalCount": count(*[_type =="post"])
+}`;
 
-  const searchQuery = `*[_type=="post" && title match "${searchTitle}"] | order(_createdAt)`;
+  return client.fetch(query);
+};
 
-  return searchTitle ? client.fetch(searchQuery) : client.fetch(query);
+export const searchBlogPosts = async (searchTerm) => {
+  const query = `
+  {"results": *[_type=="post" && title match "${searchTerm}"] | order(_createdAt),
+  "totalCount": count(*[_type =="post" && title match "${searchTerm}"])
+}`;
+
+  return client.fetch(query);
 };
 
 export const getBlogPost = async (slug) => {
   const client = createClient(clientConfig);
-
-  console.log("slug", slug);
 
   const query = `*[_type=="post" && slug.current == $slug ] [0] {
     _id,

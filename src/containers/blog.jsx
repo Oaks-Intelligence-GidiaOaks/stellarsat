@@ -11,9 +11,8 @@ const Blog = () => {
   const [posts, setPosts] = useState([]);
 
   useEffect(() => {
-    getBlogPosts().then((res) => {
-      console.log(res);
-      setPosts(res);
+    getBlogPosts(0, 4).then((res) => {
+      setPosts(res.results);
     });
   }, []);
 
@@ -27,9 +26,9 @@ const Blog = () => {
         </div>
 
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5 ">
-          {posts?.map((post) => {
-            return <PostCard data={post} />;
-          })}
+          {posts?.map((post, i) => (
+            <PostCard key={i} data={post} />
+          ))}
         </div>
       </div>
     </section>
