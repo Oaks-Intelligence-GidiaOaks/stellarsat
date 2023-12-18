@@ -18,7 +18,7 @@ const PostCard = ({ mainBlog, data }) => {
           <img
             src={data?.image}
             alt=""
-            className="w-full h-40 border-t border-l border-r border-primary-200"
+            className="w-full h-40 border-t border-l border-r border-primary-200 object-cover"
           />
 
           {!mainBlog && (
