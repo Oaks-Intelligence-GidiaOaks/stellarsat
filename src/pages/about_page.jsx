@@ -1,9 +1,18 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { AboutUs, ContactUs, JoinUs, Specialization } from "../containers";
 import AboutBanner from "../containers/about_banner";
 import aboutBannerBg from "../assets/aboutBanner.svg";
+import ReactGA from "react-ga4";
 
 const AboutPage = () => {
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: window.location.pathname,
+      title: "About Page",
+    });
+  }, []);
+
   return (
     <div>
       {/* about banner */}

@@ -1,7 +1,16 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { AboutBanner, ContactUs, JoinUs } from "../containers";
+import ReactGA from "react-ga4";
 
 const ContactPage = () => {
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: window.location.pathname,
+      title: "About Page",
+    });
+  }, []);
+
   return (
     <div>
       {/* banner */}

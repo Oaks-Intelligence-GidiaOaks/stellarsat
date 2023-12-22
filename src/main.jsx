@@ -16,6 +16,12 @@ import "slick-carousel/slick/slick.css";
 import "slick-carousel/slick/slick-theme.css";
 import "react-toastify/dist/ReactToastify.css";
 import { QueryClient, QueryClientProvider } from "@tanstack/react-query";
+import ReactGA from "react-ga4";
+
+const MEASUREMENT_ID = "G-FCVX8V883R";
+ReactGA.initialize(MEASUREMENT_ID);
+
+ReactGA.send({ hitType: "pageview", page: document.location.pathname });
 
 export const router = createBrowserRouter([
   {

@@ -12,9 +12,17 @@ import {
   Testimonials,
 } from "../containers";
 import { getBlogPosts } from "../../utils/sanity-utils";
+import ReactGA from "react-ga4";
 
 const HomePage = () => {
   // console.log(import.meta.env);
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: window.location.pathname,
+      title: "About Page",
+    });
+  }, []);
 
   return (
     <div className="conatiner mx-auto">

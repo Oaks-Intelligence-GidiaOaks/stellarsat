@@ -1,3 +1,4 @@
+import { useEffect } from "react";
 import {
   AboutUs,
   Banner,
@@ -10,17 +11,18 @@ import {
   SuccessStories,
   Testimonials,
 } from "../containers";
+import ReactGA from "react-ga4";
 
 console.log(import.meta.env.VITE_SMTP_PORT);
 
 export const HomePage = () => {
   useEffect(() => {
-    first;
-
-    return () => {
-      second;
-    };
-  }, [third])();
+    ReactGA.send({
+      hitType: "pageview",
+      page: window.location.pathname,
+      title: "About Page",
+    });
+  }, []);
 
   return (
     <div className="conatiner mx-auto">

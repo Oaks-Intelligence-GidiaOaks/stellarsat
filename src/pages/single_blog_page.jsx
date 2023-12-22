@@ -3,11 +3,20 @@ import { ContactUs, JoinUs, BlogPostBanner } from "../containers";
 import { BlogPost, PostCard } from "../components";
 import { useParams } from "react-router-dom";
 import { getBlogPost, getBlogPosts } from "../../utils/sanity-utils";
+import ReactGA from "react-ga4";
 
 const SingleBlogPage = () => {
   const [blogPost, setBlogPost] = useState(null);
   const [blogPosts, setBlogPosts] = useState([]);
   const { id } = useParams();
+
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: window.location.pathname,
+      title: "About Page",
+    });
+  }, []);
 
   useEffect(() => {
     const getPostQuery = async () => {

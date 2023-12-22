@@ -1,8 +1,18 @@
 import { ContactUs, JoinUs, MainBlog } from "../containers";
 import AboutBanner from "../containers/about_banner";
 import blogBanner from "../assets/blogBanner.svg";
+import { useEffect } from "react";
+import ReactGA from "react-ga4";
 
 const BlogPage = () => {
+  useEffect(() => {
+    ReactGA.send({
+      hitType: "pageview",
+      page: window.location.pathname,
+      title: "About Page",
+    });
+  }, []);
+
   return (
     <div className="  ">
       {/* blog banner */}
