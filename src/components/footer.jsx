@@ -166,12 +166,7 @@ const Footer = () => {
         <p className="bottom-0 left-0 z-30 right-0 py-2 text-sm  text-center gap-10 text-primary-black mx-auto">
           <div className="flex items-center justify-center gap-1">
             <div className="flex flex-col sm:flex-row gap-2 items-center">
-              <div className="flex items-center gap-1">
-                <span>A product of</span>
-                <img src={escro_tech} alt="logo" className=" w-4 h-4" />
-                <span>Escrow-Tech.</span>
-              </div>
-              <span> Copyright &copy; {currentYear}. All Rights Reserved.</span>
+              <span> Copyright &copy; {currentYear} Escrow-Tech. All Rights Reserved.</span>
             </div>
           </div>
         </p>
