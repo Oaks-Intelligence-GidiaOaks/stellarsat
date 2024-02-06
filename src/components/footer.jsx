@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import logo from "../assets/logo.svg";
+import escro_tech from "../assets/escro_tech.svg"
 import Button from "./button";
 import { BiLogoFacebook } from "react-icons/bi";
 import { BsTwitter, BsInstagram } from "react-icons/bs";
@@ -14,6 +15,7 @@ import {
 } from "react-scroll";
 
 const Footer = () => {
+  const currentYear = new Date().getFullYear();
   useEffect(() => {
     // Registering the 'begin' event and logging it to the console when triggered.
     Events.scrollEvent.register("begin", (to, element) => {
@@ -158,6 +160,16 @@ const Footer = () => {
             <BsInstagram />
           </div>
         </div>
+      </div>
+
+      <div>
+        <p className="bottom-0 left-0 z-30 right-0 py-2 text-sm  text-center gap-10 text-primary-black mx-auto">
+          <div className="flex items-center justify-center gap-1">
+            <div className="flex flex-col sm:flex-row gap-2 items-center">
+              <span> Copyright &copy; {currentYear} Escrow-Tech. All Rights Reserved.</span>
+            </div>
+          </div>
+        </p>
       </div>
     </div>
   );
